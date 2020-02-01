@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
 #define COMMANDS 3
 
@@ -14,25 +13,27 @@ char a = 'a';
 void toMorse();
 void toEnglish();
 void out();
+void clearScreen();
 
 void (*which[COMMANDS])() = {toMorse, toEnglish, out};
 
 void toMorse()
 {
     int i = 0;
-    char *word = malloc(sizeof(char) * 5);
+    char *word = malloc(sizeof(char) * 64);
 
     printf("Enter your word in english: ");
 
     scanf("%s", word);
 
+    clearScreen();
     printf("Morse: ");
     while(word[i] != '\0')
     {
         printf("%s ", LETTERS[word[i] - a]);
         i++;
     }
-    printf("\n");
+    printf("\n\n\n");
 }
 
 //TODO
